@@ -1,11 +1,18 @@
 import yaml
 import jinja2
 
+
+all_keys = set()
 def to_flat(d: dict, a=None, parent=''):
     if a is None:
         a = []
 
     for k, v in d.items():
+        if k not in all_keys:
+            all_keys.add(k)
+        else:
+            k = f'{k} {parent}'
+
         a.append((k, parent))
         if v is not None:
             assert isinstance(v, dict)
