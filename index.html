@@ -1,0 +1,46 @@
+<head>
+    <!-- Load plotly.js into the DOM -->
+    <script src='https://cdn.plot.ly/plotly-2.14.0.min.js'></script>
+    <title>World languages</title>
+    <meta charset="UTF-8">
+     <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        #myDiv {
+            min-height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+<div id='myDiv'><!-- Plotly chart will be drawn inside this DIV --></div>
+<script>
+    data = [{
+        type: "treemap",
+            labels: {{ labels }},
+            parents: {{ parents }},
+    }]
+    var layout = {
+  annotations: [{
+    showarrow: false,
+    text: "branchvalues: <b>remainder</b>",
+    x: 0.25,
+    xanchor: "center",
+    y: 1.1,
+    yanchor: "bottom"
+    }, {
+    showarrow: false,
+    text: "branchvalues: <b>total</b>",
+    x: 0.75,
+    xanchor: "center",
+    y: 1.1,
+    yanchor: "bottom"
+    }]}
+
+    Plotly.newPlot('myDiv', data)
+
+</script>
+</body>
